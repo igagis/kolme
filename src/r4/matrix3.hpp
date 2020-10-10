@@ -10,7 +10,7 @@
 
 namespace r4{
 
-template <typename T> class vector2;
+template <typename T> class vector<T, 2>;
 template <typename T> class vector3;
 
 /**
@@ -77,7 +77,7 @@ public:
 	 * @param vec - vector to transform.
      * @return Transformed vector.
      */
-	vector2<T> operator*(const vector2<T>& vec)const noexcept;
+	vector<T, 2> operator*(const vector<T, 2>& vec)const noexcept;
 
 	/**
 	 * @brief Transform vector by matrix.
@@ -302,7 +302,7 @@ public:
 	 * @param s - vector of scaling factors in x and y directions, scaling factor in z direction is 1.
 	 * @return reference to this matrix instance.
 	 */
-	matrix3& scale(const vector2<T>& s)noexcept;
+	matrix3& scale(const vector<T, 2>& s)noexcept;
 
 	/**
 	 * @brief Multiply this matrix by translation matrix.
@@ -332,7 +332,7 @@ public:
 	 * @param t - translation vector.
 	 * @return reference to this matrix object.
 	 */
-	matrix3& translate(const vector2<T>& t)noexcept;
+	matrix3& translate(const vector<T, 2>& t)noexcept;
 
 	/**
 	 * @brief Multiply this matrix by rotation matrix.
@@ -480,9 +480,9 @@ public:
 
 namespace r4{
 
-template <class T> vector2<T> matrix3<T>::operator*(const vector2<T>& vec)const noexcept{
+template <class T> vector<T, 2> matrix3<T>::operator*(const vector<T, 2>& vec)const noexcept{
 	// TRACE_ALWAYS(<< "this->row(1) = " << this->row(1) << " vec = " << vec << std::endl)
-	return vector2<T>(
+	return vector<T, 2>(
 			this->row(0) * vec,
 			this->row(1) * vec
 		);
@@ -496,11 +496,11 @@ template <class T> vector3<T> matrix3<T>::operator*(const vector3<T>& vec)const 
 		);
 }
 
-template <class T> matrix3<T>& matrix3<T>::scale(const vector2<T>& s)noexcept{
+template <class T> matrix3<T>& matrix3<T>::scale(const vector<T, 2>& s)noexcept{
 	return this->scale(s.x, s.y);
 }
 
-template <class T> matrix3<T>& matrix3<T>::translate(const vector2<T>& t)noexcept{
+template <class T> matrix3<T>& matrix3<T>::translate(const vector<T, 2>& t)noexcept{
 	return this->translate(t.x(), t.y());
 }
 

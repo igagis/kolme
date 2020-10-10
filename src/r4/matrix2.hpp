@@ -13,7 +13,7 @@
 
 namespace r4{
 
-template <typename T> class vector2;
+template <typename T> class vector<T, 2>;
 
 /**
  * @brief 2x3 matrix template class.

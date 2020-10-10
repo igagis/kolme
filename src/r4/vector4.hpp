@@ -6,9 +6,11 @@
 #include <utki/debug.hpp>
 #include <utki/math.hpp>
 
+#include "vector.hpp"
+
 namespace r4{
 
-template <class T> class vector2;
+template <class T> class vector<T, 2>;
 template <class T> class vector3;
 
 /**
@@ -173,7 +175,7 @@ public:
 	 * @param z - value to use for initialization of 3rd vector component.
 	 * @param w - value to use for initialization of 4th vector component.
 	 */
-	constexpr vector4(const vector2<T>& vec, T z = 0, T w = 1)noexcept;
+	constexpr vector4(const vector<T, 2>& vec, T z = 0, T w = 1)noexcept;
 
 	/**
 	 * @brief Constructor.
@@ -216,7 +218,7 @@ public:
 	 * @param vec - 2d vector to assign first two components from.
 	 * @return Reference to this vector object.
 	 */
-	vector4& operator=(const vector2<T>& vec)noexcept;
+	vector4& operator=(const vector<T, 2>& vec)noexcept;
 
 	/**
 	 * @brief Assign a number.
@@ -249,7 +251,7 @@ public:
 	 * @param vec - 2d vector to use for addition.
 	 * @return Reference to this vector object.
 	 */
-	vector4& operator+=(const vector2<T>& vec)noexcept;
+	vector4& operator+=(const vector<T, 2>& vec)noexcept;
 
 	/**
 	 * @brief Add and assign.
@@ -595,7 +597,7 @@ public:
 
 namespace r4{
 
-template <class T> constexpr vector4<T>::vector4(const vector2<T>& vec, T z, T w)noexcept :
+template <class T> constexpr vector4<T>::vector4(const vector<T, 2>& vec, T z, T w)noexcept :
 		vector4(vec.x(), vec.y(), z, w)
 {}
 
@@ -611,7 +613,7 @@ template <class T> vector4<T>& vector4<T>::operator=(const vector3<T>& vec)noexc
 	return *this;
 }
 
-template <class T> vector4<T>& vector4<T>::operator=(const vector2<T>& vec)noexcept{
+template <class T> vector4<T>& vector4<T>::operator=(const vector<T, 2>& vec)noexcept{
 	this->x() = vec.x();
 	this->y() = vec.y();
 	this->z() = 0;
@@ -619,7 +621,7 @@ template <class T> vector4<T>& vector4<T>::operator=(const vector2<T>& vec)noexc
 	return *this;
 }
 
-template <class T> vector4<T>& vector4<T>::operator+=(const vector2<T>& vec)noexcept{
+template <class T> vector4<T>& vector4<T>::operator+=(const vector<T, 2>& vec)noexcept{
 	this->x() += vec.x();
 	this->y() += vec.y();
 	this->w() += T(1);

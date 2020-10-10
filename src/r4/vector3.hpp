@@ -6,9 +6,11 @@
 #include <utki/debug.hpp>
 #include <utki/math.hpp>
 
+#include "vector.hpp"
+
 namespace r4{
 
-template <class T> class vector2;
+template <class T> class vector<T, 2>;
 template <class T> class vector4;
 template <class T> class matrix4;
 template <class T> class quaternion;
@@ -145,7 +147,7 @@ public:
 	 * @param vec - 2d vector to use for initialization of first two vector components.
 	 * @param z - value to use for initialization of 3rd vector component.
 	 */
-	constexpr vector3(const vector2<T>& vec, T z = 0)noexcept;
+	constexpr vector3(const vector<T, 2>& vec, T z = 0)noexcept;
 
 	/**
 	 * @brief Constructor.
@@ -176,7 +178,7 @@ public:
 	 * @param vec - 2d vector to assign first two components from.
 	 * @return Reference to this vector object.
 	 */
-	vector3& operator=(const vector2<T>& vec)noexcept;
+	vector3& operator=(const vector<T, 2>& vec)noexcept;
 
 	/**
 	 * @brief Assign a number.
@@ -210,7 +212,7 @@ public:
 	 * @param vec - 2d vector to use for addition.
 	 * @return Reference to this vector object.
 	 */
-	vector3& operator+=(const vector2<T>& vec)noexcept;
+	vector3& operator+=(const vector<T, 2>& vec)noexcept;
 
 	/**
 	 * @brief Add and assign.
@@ -556,7 +558,7 @@ public:
 
 namespace r4{
 
-template <class T> constexpr vector3<T>::vector3(const vector2<T>& vec, T z)noexcept :
+template <class T> constexpr vector3<T>::vector3(const vector<T, 2>& vec, T z)noexcept :
 		std::array<T, 3>{{vec[0], vec[1], z}}
 {}
 
@@ -564,14 +566,14 @@ template <class T> constexpr vector3<T>::vector3(const vector4<T>& vec)noexcept 
 		std::array<T, 3>{{vec[0], vec[1], vec[2]}}
 {}
 
-template <class T> vector3<T>& vector3<T>::operator=(const vector2<T>& vec)noexcept{
+template <class T> vector3<T>& vector3<T>::operator=(const vector<T, 2>& vec)noexcept{
 	this->x() = vec.x();
 	this->y() = vec.y();
 	this->z() = 0;
 	return *this;
 }
 
-template <class T> vector3<T>& vector3<T>::operator+=(const vector2<T>& vec)noexcept{
+template <class T> vector3<T>& vector3<T>::operator+=(const vector<T, 2>& vec)noexcept{
 	this->x() += vec.x();
 	this->y() += vec.y();
 	return *this;
