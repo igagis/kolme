@@ -16,6 +16,7 @@ template <class T> class vector3;
  * @brief Two-dimensional vector class.
  */
 template <class T> class vector<T, 2> : public vector_base<T, 2, vector>{
+	typedef vector_base<T, 2, vector> base_type;
 public:
 	/**
 	 * @brief 0th vector component.
@@ -58,7 +59,7 @@ public:
 	 * @param y - y component of the vector.
 	 */
 	constexpr vector(T x, T y)noexcept :
-			vector_base<T, 2, vector>{x, y}
+			base_type{x, y}
 	{}
 
 	/**
