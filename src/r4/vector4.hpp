@@ -609,7 +609,7 @@ template <class T> vector4<T>& vector4<T>::operator=(const vector3<T>& vec)noexc
 	this->x() = vec.x();
 	this->y() = vec.y();
 	this->z() = vec.z();
-	this->w() = T(1);
+	this->w() = 1;
 	return *this;
 }
 
@@ -617,14 +617,14 @@ template <class T> vector4<T>& vector4<T>::operator=(const vector<T, 2>& vec)noe
 	this->x() = vec.x();
 	this->y() = vec.y();
 	this->z() = 0;
-	this->w() = T(1);
+	this->w() = 1;
 	return *this;
 }
 
 template <class T> vector4<T>& vector4<T>::operator+=(const vector<T, 2>& vec)noexcept{
 	this->x() += vec.x();
 	this->y() += vec.y();
-	this->w() += T(1);
+	this->w() += 1;
 	return *this;
 }
 
@@ -632,7 +632,7 @@ template <class T> vector4<T>& vector4<T>::operator+=(const vector3<T>& vec)noex
 	this->x() += vec.x();
 	this->y() += vec.y();
 	this->z() += vec.z();
-	this->w() += T(1);
+	this->w() += 1;
 	return *this;
 }
 
